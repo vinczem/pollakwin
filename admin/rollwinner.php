@@ -33,7 +33,7 @@
                                 </a>
                             </span>
 					<span class="navbar-item">
-                                <a class="button is-white is-outlined" href="https://pollak.hu">
+                                <a class="button is-white is-outlined" target="_blank" href="https://pollak.hu">
                                     <span>Pollák</span>
                                 </a>
                             </span>
@@ -42,17 +42,20 @@
 		</nav>
 	</div>
 
+    <canvas id="confetti-canvas">
+    </canvas>
 	<div class="hero-body">
 		<div class="container has-text-centered">
 			<div class="column is-6 is-offset-3">
 
-                <img src="../pics/pollaklogo1.png" alt="pollak">
+
+                <img src="../pics/pollaklogo1.png" id="logo" alt="pollak">
                 <div id="winner">
                     <h1 class="title is-1" id="winnerh1"></h1>
                 </div>
                 <br>
                 <div>
-                    <button class="button is-danger is-large" onclick="rollwinner()">Sorsolás</button>
+                    <button class="button is-danger is-large" id="confetti-box" onclick="rollwinner()">Sorsolás</button>
                 </div>
 			</div>
 		</div>

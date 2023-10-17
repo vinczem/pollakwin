@@ -32,7 +32,7 @@
                                 </a>
                             </span>
                     <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="https://pollak.hu">
+                                <a class="button is-white is-outlined" target="_blank" href="https://pollak.hu">
                                     <span>Pollák</span>
                                 </a>
                             </span>
