@@ -8,7 +8,7 @@
     <title>Pollák Nyereményjáték</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <!-- Bulma Version 0.9.0-->
-    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css"/>
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -49,22 +49,28 @@
                     Nyereményjáték
                 </h1>
                 <h2 class="subtitle is-3">
-                    Regisztrálj email címmel és nyerj egy Pollákos ajándékot!
+                    Regisztrálj a neveddel, email címmeddel és nyerj egy Pollákos pólót!
                 </h2>
                 <div class="box">
                     <form action="admin/adduser.php" method="post">
-                    <div class="field is-grouped">
+                        <div class="field">
                             <p class="control is-expanded">
-                                <input name="email" class="input" type="text" placeholder="Email cím">
+                                <input name="name" class="input" type="text" placeholder="Név">
                             </p>
-                            <p class="control">
-                                <input type="submit" name="adduser" class="button is-info" value="Regisztrálás">
+                        </div>
+                        <div class="field">
+                            <p class="control is-expanded">
+                                <input name="email" class="input" type="email" placeholder="Email cím">
                             </p>
-                    </div>
-                    </form>
+                        </div>
+                        <p class="control">
+                            <input type="submit" name="adduser" class="button is-info" value="Regisztrálás">
+                        </p>
                 </div>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 
 </section>
