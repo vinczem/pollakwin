@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="hu">
 
 <head>
     <meta charset="utf-8">
@@ -45,13 +45,19 @@
         <div class="container has-text-centered">
             <div class="column is-6 is-offset-3">
                 <img src="pics/pollaklogo1.png" alt="pollak">
-                <h1 class="title is-1">
+                <h1 class="title is-2">
                     Nyereményjáték
                 </h1>
                 <h2 class="subtitle is-3">
                     Regisztrálj a neveddel, email címmeddel és nyerj egy Pollákos pólót!
                 </h2>
                 <div class="box">
+                    <?php
+                    if (isset($_GET['signup']) && $_GET['signup'] == 'success') {
+                        echo '<h3 class="title is-3" style="color: hsl(141, 53%, 53%)!important;">Sikeres regisztráció!</h3>';
+                    }
+
+                    ?>
                     <form action="admin/adduser.php" method="post">
                         <div class="field">
                             <p class="control is-expanded">

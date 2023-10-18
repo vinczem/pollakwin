@@ -21,7 +21,7 @@ if(isset($_POST['adduser'])) {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $name, $email);
     $stmt->execute();
-    header("Location: ../index.php");
+    header("Location: ../index.php?signup=success");
     $stmt->close();
     $conn->close();
 }
