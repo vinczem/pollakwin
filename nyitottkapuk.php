@@ -86,6 +86,8 @@
                             <form action="admin/adduser.php" method="post">
                                 <input type="hidden" name="rendezveny" value="nyitottkapuk">
 
+                                <input type="hidden" name="" value="<?php echo isset($_GET['szin']) ? $_GET['szin'] : 'feher'; ?>">
+                               
                                 <div class="field">
                                     <p class="control is-expanded">
                                         <input name="name" class="input" type="text" placeholder="Név">
