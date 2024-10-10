@@ -24,9 +24,8 @@ if(isset($_POST['adduser'])) {
     //mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt1);
     $row = mysqli_fetch_assoc($result);
-       // print_r($row); 
-       // die;
-	if (count($row) == 0){
+
+	if ($row == null){
         $sql = "INSERT INTO users (name, email) VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $name, $email);
