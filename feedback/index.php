@@ -37,7 +37,7 @@
                 <p>
                     Örülünk, hogy részt vettél a Pollák Nyílt Napon! <br> 
                     Az alábbiakban egy rövid kérdőív segítségével szeretnénk megtudni a véleményed. <br>
-                    <span>A beküldők között 3 db pólót sorsolunk ki!</span>
+                    <span>A beküldők között egy ajándékcsomagot!</span>
                 <br>
                 </p>
 

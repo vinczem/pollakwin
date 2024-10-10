@@ -1,8 +1,8 @@
 <?php
 
-$dbServername = "127.0.0.1";
-$dbUsername = "root";
-$dbPassword = "";
+$dbServername = getenv('DB_HOST');
+$dbUsername = getenv('DB_USER');
+$dbPassword = getenv('DB_PASS');
 $dbName = "pollakrendezvenyek";
 
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
