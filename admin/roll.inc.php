@@ -21,9 +21,11 @@ if (isset($_POST['roll'])) {
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         $row = mysqli_fetch_assoc($result);
+		if ($row != null){
         $winner = $row['name'];
         $sql = "UPDATE users SET won='True' WHERE name='$winner'";
         mysqli_query($conn, $sql);
         echo $winner;
+		}
     }
 }

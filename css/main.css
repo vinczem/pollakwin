@@ -4,8 +4,9 @@
     width: 20px;
 }
 
-#logo {
+img {
     width: 50%;
+    height: 50%;
 }
 
 #confetti-canvas {
@@ -26,4 +27,110 @@
     top: 0;
     left: 0;
     height: 10px;
+}
+
+html, body {
+    height:100%;
+
+}
+@keyframes fadein{
+    0% { opacity:0%;}
+    50% { opacity: 80%;}
+    100% {opacity: 100%;}
+}
+
+@keyframes fadeout{
+    from { opacity:100%;}    
+    to {opacity: 0%;}
+}
+.box {
+    background-color: #485fc7; 
+    /* background-color: #2D2D95; */
+    border-style: none;
+    box-shadow: none !important;
+    margin-top: 100px;
+    animation: fadein 1.5s;
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.form__field {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  outline: 0;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  font-weight: lighter !important;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: bold;
+  font-family:'Courier New', Courier, monospace;
+
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #11998e;
+    font-weight: 700;
+  }
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #3cdfd1, #0a60ff);
+  border-image-slice: 1;
+}
+/* reset input */
+.form__field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}
+#Regist {
+    border: 3px #3cdfd1 solid;
+    border-radius: 5px;
+    background-color: #3cdfd1; 
+    /* background-color: #0EFBCE;*/
+}
+#Regist:hover{
+    cursor: pointer;
+    background-color: #4480ee;
+    border: 3px #4480ee solid
+}
+
+.control:hover{
+  cursor: pointer;
+  color: #01050e;
 }

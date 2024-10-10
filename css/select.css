@@ -1,0 +1,60 @@
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.form-select {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    appearance: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+}
+
+.form-select:hover {
+    background-color: #b8b8b8;
+    transform: scale(1.02);
+}
+
+.form-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-select option {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+.form-select option:checked {
+    padding-left: 30px; /* Balról eltolja a szöveget */
+}
+
+.icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(0, 0, 0);
+    pointer-events: none;
+}
+
+.form-select:focus + .icon {
+    animation: bounce 0.5s forwards;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(-50%); }
+    50% { transform: translateY(-60%); }
+}
+
+select {
+    font-family:  "Lobster", sans-serif,'FontAwesome';
+}
+
+

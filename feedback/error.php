@@ -23,7 +23,20 @@
                 <h1 class="title is-2">Elégedettségi kérdőív</h1>
 
                 <div class="box" style="color: hsl(141, 53%, 53%)">
-                    A válaszod megkaptuk, köszönjük!
+                <?php
+                if(isset($_GET['failed'])){
+                switch ($_GET['failed']){
+                    case 1:
+                        echo "Sajnos, csak regisztrált felhasználók tölthetik ki!";
+                        break;
+                    case 2:
+                        echo "Már kitöltötte a kérdőívet!";
+                        break;
+                }
+                }else{
+                    echo "Valami hiba van!";
+                }
+                  ?>
                 </div>
             </div>
         </div>

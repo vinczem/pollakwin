@@ -27,23 +27,23 @@
                     <h1 class="title is-2">Nyitott Kapuk 2023.</h1>
                     <h2 class="mt-5">Válassz kört!</h2>
 
-                    <a href="https://pannoniait.com/nyitottkapuk.php?szin=piros" target="_blank" rel="noopener noreferrer">
+                    <a href="./nyitottkapuk.php?szin=piros" target="_blank" rel="noopener noreferrer">
                         <button type="button" class="btn btn-danger col-12 my-2">Piros kör</button>
                     </a>
 
-                    <a href="https://pannoniait.com/nyitottkapuk.php?szin=zold" target="_blank" rel="noopener noreferrer">
+                    <a href="./nyitottkapuk.php?szin=zold" target="_blank" rel="noopener noreferrer">
                         <button type="button" class="btn btn-success col-12 my-2">Zöld kör</button>
                     </a>
 
-                    <a href="https://pannoniait.com/nyitottkapuk.php?szin=kek" target="_blank" rel="noopener noreferrer">
+                    <a href="./nyitottkapuk.php?szin=kek" target="_blank" rel="noopener noreferrer">
                         <button type="button" class="btn btn-primary col-12 my-2">Kék kör</button>
                     </a>
 
-                    <a href="https://pannoniait.com/nyitottkapuk.php?szin=narancs" target="_blank" rel="noopener noreferrer">
+                    <a href="./nyitottkapuk.php?szin=narancs" target="_blank" rel="noopener noreferrer">
                         <button type="button" class="btn btn-warning col-12 my-2">Narancs kör</button>
                     </a>
 
-                    <a href="https://pannoniait.com/nyitottkapuk.php?szin=sarga" target="_blank" rel="noopener noreferrer">
+                    <a href="./nyitottkapuk.php?szin=sarga" target="_blank" rel="noopener noreferrer">
                         <button type="button" class="btn bg-warning-subtle col-12 my-2">Sárga kör</button>
                     </a>
 
