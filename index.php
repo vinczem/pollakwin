@@ -51,7 +51,7 @@
                     Nyereményjáték
                 </h1>
                 <h2 class="subtitle is-3">
-                    Regisztrálj a neveddel, email címmeddel és nyerj egy Pollákos ajándék csomagot!
+                    Regisztrálj a neveddel, email címeddel és nyerj egy Pollákos ajándékcsomagot!
                 </h2>
                 <div class="box">
                     <?php
