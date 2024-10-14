@@ -95,6 +95,9 @@
                         </p>
                 </div>
                 </form>
+                <p>
+                    <a class="adatv" href="https://hod-szentesi.cms.intezmeny.edir.hu/uploads/ADATKEZELESI_TAJEKOZTATO_HSZC_tajekoztato_rendezvenyre_jelentkezessel_kapcsolatos_adatkezelesrol_14d4a44370_2af2b81a70_ca29173825.pdf" target="_blank" rel="noopener noreferrer">Adatkezelési tájékoztató</a>
+                </p>
             </div>
         </div>
     </div>

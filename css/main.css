@@ -134,3 +134,13 @@ html, body {
   cursor: pointer;
   color: #01050e;
 }
+
+p > a.adatv{
+  cursor: pointer;
+  color: #3cdfd1;
+  text-decoration: underline;
+}
+a.adatv:hover{
+  cursor: pointer;
+  color: #01050e;
+}
