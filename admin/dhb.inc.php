@@ -6,4 +6,4 @@ $dbPassword = getenv('DB_PASS');
 $dbName = "pollakrendezvenyek";
 
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
-$conn->set_charset("utf8");
+$conn->set_charset("utf8mb4");
