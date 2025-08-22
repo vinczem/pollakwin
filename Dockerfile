@@ -1,5 +1,5 @@
-# Tells the image to use the latest version of PHP
-FROM php:apache
+# Tells the image to use the latest version of PHP with explicit platform
+FROM --platform=linux/amd64 php:8.2-apache
 
 # Update the image to the latest packages
 RUN apt-get update && apt-get upgrade -y

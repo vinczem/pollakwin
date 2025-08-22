@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      platform: linux/amd64
+    platform: linux/amd64
+    ports:
+      - "8080:80"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=pollakrendezvenyek
+      - DB_USER=root
+      - DB_PASS=rootpassword
+      - PRODUCTION=false
+      - SITE_URL=http://localhost:8080
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www/html
+
+  db:
+    image: mysql:8.0
+    platform: linux/amd64
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=pollakrendezvenyek
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./create_users_table.sql:/docker-entrypoint-initdb.d/create_users_table.sql
+
+volumes:
+  mysql_data:
