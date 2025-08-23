@@ -1,5 +1,22 @@
 {
+  "name": "pollakwin",
+  "version": "1.0.0",
+  "description": "Pollák Nyereményjáték - Prize game application",
+  "scripts": {
+    "install-deps": "npm install",
+    "build": "echo 'No build step required'",
+    "dev": "echo 'Development server running on XAMPP'"
+  },
   "dependencies": {
     "bulma": "^0.9.4"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [
+    "php",
+    "mysql",
+    "contest",
+    "prize-game"
+  ],
+  "author": "Pollák",
+  "license": "MIT"
 }
