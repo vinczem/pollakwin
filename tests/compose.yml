@@ -1,0 +1,33 @@
+services:
+  web:
+    build:
+      context: ..
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: pollakwin_test
+      DB_USER: pollakwin
+      DB_PASS: testpassword
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost/index.php"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: pollakwin
+      POSTGRES_PASSWORD: testpassword
+      POSTGRES_DB: pollakwin_test
+    tmpfs:
+      - /var/lib/postgresql/data
+    volumes:
+      - ../create_users_table.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pollakwin -d pollakwin_test"]
+      interval: 2s
+      timeout: 5s
+      retries: 30

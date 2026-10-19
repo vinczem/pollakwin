@@ -1,36 +1,36 @@
-version: "3.8"
-
 services:
   web:
+    image: ${POLLAKWIN_IMAGE:-ghcr.io/vinczem/pollakwin:latest}
     build:
       context: .
-      platform: linux/amd64
-    platform: linux/amd64
     ports:
       - "8080:80"
     environment:
       - DB_HOST=db
+      - DB_PORT=5432
       - DB_NAME=pollakrendezvenyek
-      - DB_USER=root
-      - DB_PASS=rootpassword
+      - DB_USER=${DB_USER:-pollakwin}
+      - DB_PASS=${DB_PASS:?Set DB_PASS in .env}
       - PRODUCTION=false
       - SITE_URL=http://localhost:8080
     depends_on:
-      - db
-    volumes:
-      - .:/var/www/html
+      db:
+        condition: service_healthy
 
   db:
-    image: mysql:8.0
-    platform: linux/amd64
+    image: postgres:17
     environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword
-      - MYSQL_DATABASE=pollakrendezvenyek
-    ports:
-      - "3306:3306"
+      - POSTGRES_USER=${DB_USER:-pollakwin}
+      - POSTGRES_PASSWORD=${DB_PASS:?Set DB_PASS in .env}
+      - POSTGRES_DB=pollakrendezvenyek
     volumes:
-      - mysql_data:/var/lib/mysql
-      - ./create_users_table.sql:/docker-entrypoint-initdb.d/create_users_table.sql
+      - postgres_data:/var/lib/postgresql/data
+      - ./create_users_table.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
 volumes:
-  mysql_data:
+  postgres_data:

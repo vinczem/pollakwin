@@ -1,20 +1,18 @@
 #!/bin/bash
+set -e
 
 echo "🚀 Starting Pollakwin Application..."
 
-# Build and start the containers
-echo "📦 Building Docker images..."
-docker-compose build --no-cache
+# Pull the image published by GitHub Actions and start the containers
+echo "📦 Downloading Docker images..."
+docker compose pull
 
 echo "🔄 Starting services..."
-docker-compose up -d
-
-echo "⏳ Waiting for database to be ready..."
-sleep 10
+docker compose up -d --no-build --wait
 
 echo "✅ Application is ready!"
 echo "🌐 Web application: http://localhost:8080"
-echo "🗄️  Database: localhost:3306"
+echo "🗄️  PostgreSQL: db:5432 (internal Docker network)"
 echo ""
-echo "To stop the application, run: docker-compose down"
-echo "To view logs, run: docker-compose logs -f"
+echo "To stop the application, run: docker compose down"
+echo "To view logs, run: docker compose logs -f"

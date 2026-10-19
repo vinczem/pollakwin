@@ -1,5 +1,5 @@
-# Tells the image to use the latest version of PHP with explicit platform
-FROM --platform=linux/amd64 php:8.2-apache
+# Build for the target architecture selected by GitHub Actions.
+FROM php:8.2-apache
 
 # Install Node.js and npm for frontend dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
@@ -8,8 +8,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
 # Update the image to the latest packages
 RUN apt-get update && apt-get upgrade -y
 
-# Install any needed packages specified in requirements.txt
-RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+# Install the PostgreSQL client library and PDO driver.
+RUN apt-get install -y --no-install-recommends libpq-dev \
+    && docker-php-ext-install pdo_pgsql
 
 # Copy package.json first for better Docker layer caching
 COPY package.json /var/www/html/
@@ -26,6 +27,7 @@ COPY . /var/www/html
 
 # Add the environment variables to the apache configuration
 RUN echo 'SetEnv DB_HOST ${DB_HOST}' >> /etc/apache2/conf-enabled/environment.conf
+RUN echo 'SetEnv DB_PORT ${DB_PORT}' >> /etc/apache2/conf-enabled/environment.conf
 RUN echo 'SetEnv DB_NAME ${DB_NAME}' >> /etc/apache2/conf-enabled/environment.conf
 RUN echo 'SetEnv DB_USER ${DB_USER}' >> /etc/apache2/conf-enabled/environment.conf
 RUN echo 'SetEnv DB_PASS ${DB_PASS}' >> /etc/apache2/conf-enabled/environment.conf

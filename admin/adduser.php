@@ -1,41 +1,13 @@
 <?php
-/*
-if(isset($_POST['adduser'])) {
-	include "dhb.inc.php";
-    $name = htmlspecialchars($_POST['name']);
-	$email = htmlspecialchars($_POST['email']);
-	$sql = "INSERT INTO users (name, email) VALUES ('$email', '$email')";
-	if ($conn->query($sql) === TRUE) {
-		header("Location: ../index.php");
-	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
-	}
-}
-*/
-
-if(isset($_POST['adduser'])) {
-    include "dhb.inc.php";
+if (isset($_POST['adduser'])) {
+    require __DIR__ . '/dhb.inc.php';
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
-    $uniqueCheck = "SELECT email FROM users WHERE email = ?";
-    $stmt1 = $conn->prepare($uniqueCheck);
-    $stmt1->bind_param("s",$email);
-    $stmt1->execute();
-    //mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt1);
-    $row = mysqli_fetch_assoc($result);
-
-	if ($row == null){
-        $sql = "INSERT INTO users (name, email) VALUES (?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $name, $email);
-        $stmt->execute();
-        header("Location: ../index.php?signup=success");
-        $stmt->close();
-    }else{
-        header("Location: ../index.php?signup=failed");
-
-    }
-    $stmt1->close();
-    $conn->close();
+    $stmt = $conn->prepare(
+        'INSERT INTO users (name, email) VALUES (?, ?) ON CONFLICT (email) DO NOTHING RETURNING id'
+    );
+    $stmt->execute([$name, $email]);
+    $status = $stmt->fetchColumn() !== false ? 'success' : 'failed';
+    header('Location: ../index.php?signup=' . $status);
+    exit;
 }

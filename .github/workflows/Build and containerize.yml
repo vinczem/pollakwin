@@ -3,13 +3,41 @@ name: Docker Build & Publish to github packages
 on:
   push:
     branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+permissions:
+  contents: read
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  test:
+    name: PostgreSQL integration tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and start isolated test services
+        run: docker compose -p pollakwin-test -f tests/compose.yml up -d --build --wait
+      - name: Check PHP syntax
+        run: docker compose -p pollakwin-test -f tests/compose.yml exec -T web sh -c 'find /var/www/html -name "*.php" -not -path "*/node_modules/*" -print0 | xargs -0 -n1 php -l'
+      - name: Test registration, feedback, drawing and schedule
+        run: docker compose -p pollakwin-test -f tests/compose.yml exec -T web php tests/postgres.php
+      - name: Show logs on failure
+        if: failure()
+        run: docker compose -p pollakwin-test -f tests/compose.yml logs
+      - name: Clean up
+        if: always()
+        run: docker compose -p pollakwin-test -f tests/compose.yml down -v
+
   build:
+    needs: test
+    if: github.event_name == 'push'
+    permissions:
+      contents: read
+      packages: write
     name: Build Docker Image 🏗️
     runs-on: ubuntu-latest
 

@@ -13,7 +13,7 @@
   "devDependencies": {},
   "keywords": [
     "php",
-    "mysql",
+    "postgresql",
     "contest",
     "prize-game"
   ],
